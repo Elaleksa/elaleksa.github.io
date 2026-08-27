@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A concise visual note covering six common SDLC development models, their key differences, strengths, weaknesses and testing impact." />
+    <title>SDLC Development Models | Elizaveta Aleksandrova</title>
+
+    <style>
+        :root {
+          --bg: #ffffff;
+          --text: #151515;
+          --muted: #6f7480;
+          --line: #d9d9d9;
+          --surface: #f5f5f5;
+          --max: 1180px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: var(--text);
+          font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        .shell {
+          width: min(calc(100% - 48px), var(--max));
+          margin: 0 auto;
+        }
+
+        .topbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+          padding: 24px 0;
+          font-size: 14px;
+        }
+
+        .brand {
+          color: var(--text);
+          text-decoration: none;
+          font-weight: 800;
+        }
+
+        .back-link {
+          color: var(--muted);
+          text-decoration: none;
+        }
+
+        .hero {
+          padding: 72px 0 88px;
+        }
+
+        .eyebrow,
+        .model-label,
+        .comparison-label {
+          color: var(--muted);
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
+        h1 {
+          margin: 0;
+          max-width: 900px;
+          font-size: clamp(54px, 8vw, 104px);
+          line-height: .96;
+          letter-spacing: -.055em;
+        }
+
+        .hero-copy {
+          max-width: 760px;
+          margin: 24px 0 0;
+          color: var(--muted);
+          font-size: 20px;
+          line-height: 1.55;
+        }
+
+        .model {
+          padding: 32px 0 46px;
+          border-top: 1px solid var(--line);
+        }
+
+        .model h2 {
+          margin: 0;
+          font-size: clamp(34px, 4vw, 52px);
+          line-height: 1;
+          letter-spacing: -.035em;
+        }
+
+        .tagline {
+          margin: 14px 0 0;
+          font-size: 18px;
+          line-height: 1.5;
+        }
+
+        .flow {
+          margin: 34px 0 26px;
+          padding: 18px 20px;
+          border-radius: 12px;
+          background: var(--surface);
+          overflow-x: auto;
+          white-space: nowrap;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .model-copy {
+          max-width: 1060px;
+        }
+
+        .model-copy p {
+          margin: 0 0 14px;
+          font-size: 17px;
+          line-height: 1.55;
+        }
+
+        .model-copy strong {
+          font-weight: 800;
+        }
+
+        .comparison {
+          padding: 34px 0 80px;
+          border-top: 1px solid var(--line);
+        }
+
+        .comparison h2 {
+          margin: 0 0 24px;
+          font-size: clamp(34px, 4vw, 52px);
+          letter-spacing: -.035em;
+        }
+
+        .table-wrap {
+          overflow-x: auto;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 15px;
+          line-height: 1.45;
+        }
+
+        th,
+        td {
+          padding: 13px 14px;
+          text-align: left;
+          vertical-align: top;
+          border-bottom: 1px solid var(--line);
+        }
+
+        th {
+          font-weight: 800;
+        }
+
+        td:first-child {
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        footer {
+          display: flex;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 28px 0 38px;
+          border-top: 1px solid var(--line);
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        @media (max-width: 720px) {
+          .shell { width: min(calc(100% - 28px), var(--max)); }
+          .topbar { align-items: flex-start; flex-direction: column; }
+          .hero { padding: 48px 0 64px; }
+          .model { padding: 28px 0 38px; }
+          .flow { margin-top: 26px; font-size: 13px; }
+          .model-copy p { font-size: 16px; }
+          footer { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<header class="shell topbar">
+    <a class="brand" href="../../index.html">EA / QA NOTES</a>
+    <a class="back-link" href="../../index.html">← Back to profile</a>
+</header>
+
+<main>
+    <section class="shell hero">
+        <div class="eyebrow">SDLC · Development Models</div>
+        <h1>SDLC DEVELOPMENT MODELS</h1>
+        <p class="hero-copy">Six common development models and the key difference between them: how work is organized, delivered and tested.</p>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>WATERFALL</h2>
+            <p class="tagline">Plan everything first, then build step by step.</p>
+            <div class="flow">Requirements → Design → Implementation → Testing → Deployment → Maintenance</div>
+            <div class="model-copy">
+                <p>Development happens in a predefined order. One phase is completed before moving to the next.</p>
+                <p><strong>Best suited for:</strong> projects where requirements are stable and well understood.</p>
+                <p><strong>Main weakness:</strong> users may not see working software until late, so incorrect requirements can be expensive to discover.</p>
+                <p><strong>Testing impact:</strong> test analysis and design can start early, but dynamic testing starts when executable software is available.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>V-MODEL</h2>
+            <p class="tagline">Link every development activity with a corresponding test activity.</p>
+            <div class="flow">Requirements ↔ Acceptance Testing | System Design ↔ System Testing | Architecture ↔ Integration Testing | Component Design ↔ Component Testing</div>
+            <div class="model-copy">
+                <p>Development and testing activities are planned in parallel, with test levels linked to development work products.</p>
+                <p><strong>Best suited for:</strong> projects with clear requirements and a strong need for verification, validation and traceability.</p>
+                <p><strong>Main weakness:</strong> the model is relatively rigid, and late changes can be costly.</p>
+                <p><strong>Testing impact:</strong> test analysis and design start early, before the corresponding executable software exists.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>ITERATIVE</h2>
+            <p class="tagline">Build, test and improve through repeated cycles.</p>
+            <div class="flow">Plan → Design → Build → Test → Evaluate → Improve → Next Iteration</div>
+            <div class="model-copy">
+                <p>The solution is developed through repeated cycles. Each iteration revisits and improves what already exists.</p>
+                <p><strong>Best suited for:</strong> projects where requirements may evolve and feedback is needed during development.</p>
+                <p><strong>Main weakness:</strong> rework may be needed, and total effort can be harder to predict.</p>
+                <p><strong>Testing impact:</strong> testing happens in every iteration, and regression testing becomes increasingly important.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>INCREMENTAL</h2>
+            <p class="tagline">Deliver the product in small, usable parts.</p>
+            <div class="flow">Requirements → Increment 1 → Increment 2 → Increment 3 → …</div>
+            <div class="model-copy">
+                <p>Each increment adds new functionality to the existing product until the system becomes complete.</p>
+                <p><strong>Best suited for:</strong> projects where early delivery of working functionality is important.</p>
+                <p><strong>Main weakness:</strong> integration becomes more complex and good architecture is essential.</p>
+                <p><strong>Testing impact:</strong> each increment is tested together with existing functionality, increasing the need for regression testing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>SPIRAL</h2>
+            <p class="tagline">Focus on risk and refine the solution through cycles.</p>
+            <div class="flow">Planning → Risk Analysis → Engineering → Testing / Evaluation → Next Cycle</div>
+            <div class="model-copy">
+                <p>Development proceeds through repeated cycles driven by risk analysis and evaluation.</p>
+                <p><strong>Best suited for:</strong> large, complex or high-risk projects.</p>
+                <p><strong>Main weakness:</strong> it is complex and costly and requires strong risk-management expertise.</p>
+                <p><strong>Testing impact:</strong> testing and prototyping can be used early to reduce uncertainty and evaluate risks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="model">
+        <div class="shell">
+            <div class="model-label">Model</div>
+            <h2>AGILE</h2>
+            <p class="tagline">Adapt quickly and deliver in short cycles.</p>
+            <div class="flow">Plan → Design → Build → Test → Deliver → Feedback → Next Iteration</div>
+            <div class="model-copy">
+                <p>Development is iterative and incremental, with frequent delivery, collaboration and feedback.</p>
+                <p><strong>Best suited for:</strong> projects where requirements change or are not fully known.</p>
+                <p><strong>Main weakness:</strong> scope and estimates may change, and strong collaboration and discipline are required.</p>
+                <p><strong>Testing impact:</strong> testing is continuous throughout iterations, with strong emphasis on fast feedback and regression testing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison">
+        <div class="shell">
+            <div class="comparison-label">Quick comparison</div>
+            <h2>THE DIFFERENCE</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Main idea</th>
+                        <th>Pros</th>
+                        <th>Cons</th>
+                        <th>Testing impact</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Waterfall</td>
+                        <td>Sequential</td>
+                        <td>Simple, predictable</td>
+                        <td>Inflexible, testing starts late</td>
+                        <td>Dynamic testing later</td>
+                    </tr>
+                    <tr>
+                        <td>V-Model</td>
+                        <td>Development ↔ Testing</td>
+                        <td>Early test planning, traceability</td>
+                        <td>Rigid, costly changes</td>
+                        <td>Testing planned from the start</td>
+                    </tr>
+                    <tr>
+                        <td>Iterative</td>
+                        <td>Improve</td>
+                        <td>Early feedback, adapts over time</td>
+                        <td>Rework possible, harder to estimate</td>
+                        <td>Testing in every iteration</td>
+                    </tr>
+                    <tr>
+                        <td>Incremental</td>
+                        <td>Add</td>
+                        <td>Early value, smaller deliveries</td>
+                        <td>Integration complexity</td>
+                        <td>Each increment tested + regression</td>
+                    </tr>
+                    <tr>
+                        <td>Spiral</td>
+                        <td>Risk</td>
+                        <td>Strong risk management</td>
+                        <td>Complex, expensive</td>
+                        <td>Testing helps evaluate risks</td>
+                    </tr>
+                    <tr>
+                        <td>Agile</td>
+                        <td>Adapt</td>
+                        <td>Flexible, fast feedback</td>
+                        <td>Scope and estimates may change</td>
+                        <td>Continuous testing</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="shell">
+    <span>Elizaveta Aleksandrova · QA Notes</span>
+    <span>SDLC Development Models</span>
+</footer>
+</body>
+</html>
