@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A concise visual note covering six common SDLC development models, their key differences, strengths, weaknesses and testing impact." />
-    <title>SDLC Development Models | Elizaveta Aleksandrova</title>
+    <meta
+            name="description"
+            content="A concise visual note covering six common SDLC development models, their key differences, strengths, weaknesses and testing impact."
+    />
+    <title>Notes | Elizaveta Aleksandrova</title>
 
     <style>
+        /* ==========================================================
+           1. Tokens
+           ========================================================== */
         :root {
           --bg: #ffffff;
           --text: #151515;
@@ -16,9 +22,16 @@
           --max: 1180px;
         }
 
-        * { box-sizing: border-box; }
+        /* ==========================================================
+           2. Reset & base
+           ========================================================== */
+        * {
+          box-sizing: border-box;
+        }
 
-        html { scroll-behavior: smooth; }
+        html {
+          scroll-behavior: smooth;
+        }
 
         body {
           margin: 0;
@@ -28,15 +41,21 @@
           -webkit-font-smoothing: antialiased;
         }
 
+        /* ==========================================================
+           3. Layout shell
+           ========================================================== */
         .shell {
           width: min(calc(100% - 48px), var(--max));
           margin: 0 auto;
         }
 
+        /* ==========================================================
+           4. Top bar
+           ========================================================== */
         .topbar {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          justify-content: space-between;
           gap: 24px;
           padding: 24px 0;
           font-size: 14px;
@@ -44,8 +63,8 @@
 
         .brand {
           color: var(--text);
-          text-decoration: none;
           font-weight: 800;
+          text-decoration: none;
         }
 
         .back-link {
@@ -53,24 +72,67 @@
           text-decoration: none;
         }
 
+        /* ==========================================================
+           5. Shared micro-labels
+           ========================================================== */
+        .eyebrow,
+        .model-label,
+        .comparison-label {
+          margin-bottom: 10px;
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        /* ==========================================================
+           6. Intro section
+           ========================================================== */
+        .intro {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          min-height: 100vh;
+          padding-top: 24px;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .intro > .shell {
+          padding-bottom: 88px;
+        }
+
+        .intro .eyebrow {
+          margin-bottom: 10px;
+        }
+
+        .intro-copy {
+          max-width: 920px;
+          margin-top: 48px;
+        }
+
+        .intro-copy p {
+          margin: 0 0 20px;
+          color: var(--muted);
+          font-size: 19px;
+          line-height: 1.75;
+          text-align: justify;
+        }
+
+        .intro-copy p:last-child {
+          margin-bottom: 0;
+        }
+
+        /* ==========================================================
+           7. Hero section
+           ========================================================== */
         .hero {
           padding: 72px 0 88px;
         }
 
-        .eyebrow,
-        .model-label,
-        .comparison-label {
-          color: var(--muted);
-          font-size: 14px;
-          margin-bottom: 10px;
-        }
-
         h1 {
-          margin: 0;
           max-width: 900px;
+          margin: 0;
           font-size: clamp(54px, 8vw, 104px);
-          line-height: .96;
-          letter-spacing: -.055em;
+          line-height: 0.96;
+          letter-spacing: -0.055em;
         }
 
         .hero-copy {
@@ -81,6 +143,9 @@
           line-height: 1.55;
         }
 
+        /* ==========================================================
+           8. Model cards
+           ========================================================== */
         .model {
           padding: 32px 0 46px;
           border-top: 1px solid var(--line);
@@ -90,7 +155,7 @@
           margin: 0;
           font-size: clamp(34px, 4vw, 52px);
           line-height: 1;
-          letter-spacing: -.035em;
+          letter-spacing: -0.035em;
         }
 
         .tagline {
@@ -125,6 +190,9 @@
           font-weight: 800;
         }
 
+        /* ==========================================================
+           9. Comparison table
+           ========================================================== */
         .comparison {
           padding: 34px 0 80px;
           border-top: 1px solid var(--line);
@@ -133,7 +201,7 @@
         .comparison h2 {
           margin: 0 0 24px;
           font-size: clamp(34px, 4vw, 52px);
-          letter-spacing: -.035em;
+          letter-spacing: -0.035em;
         }
 
         .table-wrap {
@@ -164,6 +232,9 @@
           white-space: nowrap;
         }
 
+        /* ==========================================================
+           10. Footer
+           ========================================================== */
         footer {
           display: flex;
           justify-content: space-between;
@@ -174,28 +245,105 @@
           font-size: 14px;
         }
 
+        /* ==========================================================
+           11. Responsive
+           ========================================================== */
         @media (max-width: 720px) {
-          .shell { width: min(calc(100% - 28px), var(--max)); }
-          .topbar { align-items: flex-start; flex-direction: column; }
-          .hero { padding: 48px 0 64px; }
-          .model { padding: 28px 0 38px; }
-          .flow { margin-top: 26px; font-size: 13px; }
-          .model-copy p { font-size: 16px; }
-          footer { flex-direction: column; }
+          .shell {
+            width: min(calc(100% - 28px), var(--max));
+          }
+
+          .topbar {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .intro {
+            min-height: auto;
+            padding-top: 48px;
+          }
+
+          .intro > .shell {
+            padding-bottom: 64px;
+          }
+
+          .intro-copy p {
+            font-size: 17px;
+            line-height: 1.65;
+          }
+
+          .hero {
+            padding: 48px 0 64px;
+          }
+
+          .model {
+            padding: 28px 0 38px;
+          }
+
+          .flow {
+            margin-top: 26px;
+            font-size: 13px;
+          }
+
+          .model-copy p {
+            font-size: 16px;
+          }
+
+          footer {
+            flex-direction: column;
+          }
         }
     </style>
 </head>
 <body>
 <header class="shell topbar">
-    <a class="brand" href="../../index.html">EA / QA NOTES</a>
-    <a class="back-link" href="../../index.html">← Back to profile</a>
+    <a class="brand" href="../../">EA / QA NOTES</a>
+    <a class="back-link" href="../../">← Back to profile</a>
 </header>
 
 <main>
+    <section class="intro">
+        <div class="shell">
+            <div class="eyebrow">About these notes</div>
+            <h1 class="intro-title">THE IDEA BEHIND THESE NOTES</h1>
+
+            <div class="intro-copy">
+                <p>
+                    I’m creating these notes to make it easier for myself to learn,
+                    remember, and come back to things related to software testing.
+                    I’m currently preparing for the Test Analyst exam, so most of
+                    the content here will be related to that.
+                </p>
+
+                <p>
+                    I could write everything by hand, but I know myself well enough
+                    to know that the notebook or the pen would eventually be
+                    somewhere I’m not. Keeping everything digital just makes more sense.
+                </p>
+
+                <p>
+                    These notes are mainly for me, but feel free to use them if you
+                    find them helpful. I’ll keep adding and updating things as I go.
+                </p>
+
+                <p>
+                    And since these are study notes, mistakes can happen. If you
+                    notice something seriously wrong, feel free to let me know.
+                </p>
+
+                <p>
+                    That’s pretty much it. Hope you find something useful here.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="shell hero">
         <div class="eyebrow">SDLC · Development Models</div>
         <h1>SDLC DEVELOPMENT MODELS</h1>
-        <p class="hero-copy">Six common development models and the key difference between them: how work is organized, delivered and tested.</p>
+        <p class="hero-copy">
+            Six common development models and the key difference between them: how work is organized, delivered and tested.
+        </p>
     </section>
 
     <section class="model">
