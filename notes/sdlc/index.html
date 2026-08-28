@@ -96,6 +96,7 @@
         }
 
         .intro > .shell {
+          position: relative;
           padding-bottom: 88px;
         }
 
@@ -118,6 +119,44 @@
 
         .intro-copy p:last-child {
           margin-bottom: 0;
+        }
+
+        /* ==========================================================
+           6.1 Contents navigation
+           ========================================================== */
+        .contents {
+          position: fixed;
+          top: 26px;
+          left: 40px;
+          width: 230px;
+          z-index: 10;
+        }
+
+        .contents-title {
+          margin-bottom: 34px;
+          color: var(--text);
+          font-size: 14px;
+          font-weight: 800;
+        }
+
+        .contents a {
+          display: grid;
+          grid-template-columns: 32px 1fr;
+          gap: 14px;
+          margin-bottom: 26px;
+          color: var(--text);
+          font-size: 14px;
+          line-height: 1.35;
+          text-decoration: none;
+        }
+
+        .contents a > span:first-child {
+          color: var(--muted);
+          font-weight: 700;
+        }
+
+        .contents a:hover > span:last-child {
+          text-decoration: underline;
         }
 
         /* ==========================================================
@@ -147,8 +186,19 @@
            8. Model cards
            ========================================================== */
         .model {
+          position: relative;
           padding: 32px 0 46px;
-          border-top: 1px solid var(--line);
+          border-top: none;
+        }
+
+        .model::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: max(24px, calc((100% - var(--max)) / 2));
+          right: 0;
+          height: 1px;
+          background: var(--line);
         }
 
         .model h2 {
@@ -194,8 +244,19 @@
            9. Comparison table
            ========================================================== */
         .comparison {
+          position: relative;
           padding: 34px 0 80px;
-          border-top: 1px solid var(--line);
+          border-top: none;
+        }
+
+        .comparison::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: max(24px, calc((100% - var(--max)) / 2));
+          right: 0;
+          height: 1px;
+          background: var(--line);
         }
 
         .comparison h2 {
@@ -248,6 +309,22 @@
         /* ==========================================================
            11. Responsive
            ========================================================== */
+        @media (max-width: 1280px) {
+          .contents {
+            position: static;
+            width: 100%;
+            margin-bottom: 48px;
+          }
+
+          .contents-title {
+            margin-bottom: 20px;
+          }
+
+          .contents a {
+            margin-bottom: 16px;
+          }
+        }
+
         @media (max-width: 720px) {
           .shell {
             width: min(calc(100% - 28px), var(--max));
@@ -270,6 +347,16 @@
           .intro-copy p {
             font-size: 17px;
             line-height: 1.65;
+          }
+
+          .contents {
+            margin-bottom: 40px;
+          }
+
+          .contents a {
+            grid-template-columns: 28px 1fr;
+            gap: 12px;
+            font-size: 14px;
           }
 
           .hero {
@@ -303,6 +390,41 @@
 
 <main>
     <section class="intro">
+
+        <nav class="contents" aria-label="Contents">
+            <div class="contents-title">CONTENTS</div>
+
+            <a href="#test-process">
+                <span>01</span>
+                <span>Test Process</span>
+            </a>
+
+            <a href="#risk-based-testing">
+                <span>02</span>
+                <span>Risk-Based Testing</span>
+            </a>
+
+            <a href="#test-techniques">
+                <span>03</span>
+                <span>Test Techniques</span>
+            </a>
+
+            <a href="#software-quality">
+                <span>04</span>
+                <span>Software Quality<br>Characteristics</span>
+            </a>
+
+            <a href="#reviews">
+                <span>05</span>
+                <span>Reviews</span>
+            </a>
+
+            <a href="#test-tools">
+                <span>06</span>
+                <span>Test Tools &amp; Automation</span>
+            </a>
+        </nav>
+
         <div class="shell">
             <div class="eyebrow">About these notes</div>
             <h1 class="intro-title">THE IDEA BEHIND THESE NOTES</h1>
@@ -338,8 +460,8 @@
         </div>
     </section>
 
-    <section class="shell hero">
-        <div class="eyebrow">SDLC · Development Models</div>
+    <section class="shell hero" id="test-process">
+        <div class="eyebrow">Test Process | SDLC · Testing in the Software Development Lifecycle</div>
         <h1>SDLC DEVELOPMENT MODELS</h1>
         <p class="hero-copy">
             Six common development models and the key difference between them: how work is organized, delivered and tested.
