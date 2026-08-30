@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta
             name="description"
             content="A concise visual note covering six common SDLC development models, their key differences, strengths, weaknesses and testing impact."
@@ -124,39 +124,191 @@
         /* ==========================================================
            6.1 Contents navigation
            ========================================================== */
+
         .contents {
           position: fixed;
           top: 26px;
           left: 40px;
-          width: 230px;
+
+          width: 250px;
+          max-height: calc(100vh - 52px);
+
+          overflow-y: auto;
+
           z-index: 10;
+
+          padding-right: 16px;
         }
+
+
+        /* Title */
 
         .contents-title {
           margin-bottom: 34px;
+
           color: var(--text);
+
           font-size: 14px;
           font-weight: 800;
         }
 
-        .contents a {
+
+        /* ==========================================================
+           Main chapter links
+           ========================================================== */
+
+        .contents-main {
           display: grid;
           grid-template-columns: 32px 1fr;
           gap: 14px;
+
           margin-bottom: 26px;
+
           color: var(--text);
+
           font-size: 14px;
           line-height: 1.35;
+
           text-decoration: none;
         }
 
-        .contents a > span:first-child {
+        .contents-main > span:first-child {
           color: var(--muted);
           font-weight: 700;
         }
 
-        .contents a:hover > span:last-child {
+        .contents-main:hover > span:last-child {
           text-decoration: underline;
+        }
+
+
+        /* ==========================================================
+           Chapter group
+           ========================================================== */
+
+        .contents-group {
+          margin-bottom: 28px;
+        }
+
+        .contents-group > .contents-main {
+          margin-bottom: 15px;
+        }
+
+
+        /* ==========================================================
+           First nested level
+           SDLC / Test Analyst involvement
+           ========================================================== */
+
+        .contents-sub {
+          position: relative;
+
+          margin-left: 46px;
+          padding-left: 14px;
+        }
+
+
+        /* vertical navigation line */
+
+        .contents-sub::before {
+          content: "";
+
+          position: absolute;
+          top: 4px;
+          bottom: 4px;
+          left: 0;
+
+          width: 1px;
+
+          background: var(--line);
+        }
+
+
+        .contents-sub > a {
+          display: block;
+
+          margin-bottom: 11px;
+
+          color: var(--muted);
+
+          font-size: 13px;
+          line-height: 1.4;
+
+          text-decoration: none;
+
+          transition: color 0.15s ease;
+        }
+
+        .contents-sub > a:hover {
+          color: var(--text);
+        }
+
+
+        /* ==========================================================
+           Second nested level
+           Analysis / Design / Implementation / Execution
+           ========================================================== */
+
+        .contents-sub-level {
+          margin: 4px 0 16px 12px;
+        }
+
+        .contents-sub-level a {
+          position: relative;
+
+          display: block;
+
+          margin-bottom: 8px;
+          padding-left: 13px;
+
+          color: var(--muted);
+
+          font-size: 12px;
+          line-height: 1.4;
+
+          text-decoration: none;
+
+          transition: color 0.15s ease;
+        }
+
+        .contents-sub-level a::before {
+          content: "";
+
+          position: absolute;
+          top: 0.65em;
+          left: 0;
+
+          width: 5px;
+          height: 1px;
+
+          background: var(--line);
+        }
+
+        .contents-sub-level a:hover {
+          color: var(--text);
+        }
+
+
+        /* ==========================================================
+           Scrollbar
+           ========================================================== */
+
+        .contents {
+          scrollbar-width: thin;
+          scrollbar-color: var(--line) transparent;
+        }
+
+        .contents::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        .contents::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .contents::-webkit-scrollbar-thumb {
+          background: var(--line);
+          border-radius: 10px;
         }
 
         /* ==========================================================
@@ -380,6 +532,415 @@
             flex-direction: column;
           }
         }
+
+                /* ==========================================================
+           12. Test Analyst involvement in test activities
+           ========================================================== */
+
+        .test-activities-intro {
+          position: relative;
+          padding: 72px 0 64px;
+        }
+
+        .test-activities-intro::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: max(24px, calc((100% - var(--max)) / 2));
+          right: 0;
+          height: 1px;
+          background: var(--line);
+        }
+
+        .test-activities-intro h2 {
+          max-width: 980px;
+          margin: 0;
+
+          font-size: clamp(48px, 7vw, 88px);
+          line-height: 0.96;
+          letter-spacing: -0.055em;
+        }
+
+        .test-activities-copy {
+          max-width: 780px;
+          margin: 26px 0 0;
+
+          color: var(--muted);
+          font-size: 20px;
+          line-height: 1.6;
+        }
+
+
+        /* ==========================================================
+           Activity overview
+           ========================================================== */
+
+        .activities-overview {
+          margin-top: 42px;
+          padding: 24px;
+
+          border-radius: 12px;
+          background: var(--surface);
+
+          overflow-x: auto;
+        }
+
+        .activities-overview-label {
+          margin-bottom: 18px;
+
+          color: var(--muted);
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .activities-flow {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+
+          min-width: 850px;
+        }
+
+        .activities-flow-item {
+          flex: 1;
+        }
+
+        .activities-flow-item strong {
+          display: block;
+          margin-bottom: 6px;
+
+          font-size: 15px;
+        }
+
+        .activities-flow-item span {
+          color: var(--muted);
+          font-size: 13px;
+          line-height: 1.45;
+        }
+
+        .activities-flow-arrow {
+          color: var(--muted);
+          font-size: 19px;
+        }
+
+
+        /* ==========================================================
+           Individual activity
+           ========================================================== */
+
+        .test-activity {
+          position: relative;
+          padding: 42px 0 54px;
+        }
+
+        .test-activity::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: max(24px, calc((100% - var(--max)) / 2));
+          right: 0;
+          height: 1px;
+          background: var(--line);
+        }
+
+        .activity-label {
+          margin-bottom: 10px;
+
+          color: var(--muted);
+          font-size: 14px;
+        }
+
+        .test-activity h2 {
+          margin: 0;
+
+          font-size: clamp(34px, 4vw, 52px);
+          line-height: 1;
+          letter-spacing: -0.035em;
+        }
+
+        .activity-tagline {
+          margin: 14px 0 0;
+
+          font-size: 18px;
+          line-height: 1.5;
+        }
+
+        .activity-copy {
+          max-width: 1060px;
+          margin-top: 32px;
+        }
+
+        .activity-copy > p {
+          margin: 0 0 16px;
+
+          font-size: 17px;
+          line-height: 1.6;
+        }
+
+        .activity-copy strong {
+          font-weight: 800;
+        }
+
+
+        /* ==========================================================
+           Key point
+           ========================================================== */
+
+        .activity-key {
+          margin: 28px 0;
+          padding: 20px 22px;
+
+          border-left: 3px solid var(--text);
+          background: var(--surface);
+        }
+
+        .activity-key-label {
+          display: block;
+          margin-bottom: 8px;
+
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+        .activity-key p {
+          margin: 0;
+
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+
+        /* ==========================================================
+           Flow
+           ========================================================== */
+
+        .activity-flow {
+          margin: 28px 0;
+          padding: 18px 20px;
+
+          border-radius: 12px;
+          background: var(--surface);
+
+          overflow-x: auto;
+          white-space: nowrap;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+            Consolas, "Liberation Mono", monospace;
+
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+
+        /* ==========================================================
+           Activity list
+           ========================================================== */
+
+        .activity-list {
+          margin: 24px 0 28px;
+          padding: 0;
+
+          list-style: none;
+        }
+
+        .activity-list li {
+          position: relative;
+
+          margin-bottom: 12px;
+          padding-left: 22px;
+
+          font-size: 16px;
+          line-height: 1.55;
+        }
+
+        .activity-list li::before {
+          content: "—";
+
+          position: absolute;
+          left: 0;
+
+          color: var(--muted);
+        }
+
+
+        /* ==========================================================
+           Test design factors
+           ========================================================== */
+
+        .design-factors {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+
+          margin: 28px 0;
+        }
+
+        .design-factor {
+          padding: 16px 18px;
+
+          border: 1px solid var(--line);
+          border-radius: 10px;
+
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+
+        /* ==========================================================
+           High-level vs low-level test cases
+           ========================================================== */
+
+        .test-case-types {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px;
+
+          margin: 30px 0;
+        }
+
+        .test-case-type {
+          padding: 22px;
+
+          border: 1px solid var(--line);
+          border-radius: 12px;
+        }
+
+        .test-case-type h3 {
+          margin: 0 0 10px;
+
+          font-size: 20px;
+          letter-spacing: -0.02em;
+        }
+
+        .test-case-type > p {
+          margin: 0 0 20px;
+
+          color: var(--muted);
+          font-size: 15px;
+          line-height: 1.55;
+        }
+
+        .test-case-example {
+          padding-top: 16px;
+          border-top: 1px solid var(--line);
+        }
+
+        .test-case-example-label {
+          display: block;
+          margin-bottom: 7px;
+
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        .test-case-example p {
+          margin: 0;
+
+          font-size: 14px;
+          line-height: 1.55;
+        }
+
+
+        /* ==========================================================
+           Iterative process note
+           ========================================================== */
+
+        .activity-feedback {
+          position: relative;
+          padding: 42px 0 80px;
+        }
+
+        .activity-feedback::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: max(24px, calc((100% - var(--max)) / 2));
+          right: 0;
+          height: 1px;
+          background: var(--line);
+        }
+
+        .activity-feedback-box {
+          padding: 28px;
+
+          border-radius: 12px;
+          background: var(--surface);
+        }
+
+        .activity-feedback-box h2 {
+          margin: 0 0 16px;
+
+          font-size: clamp(28px, 4vw, 40px);
+          letter-spacing: -0.035em;
+        }
+
+        .activity-feedback-box p {
+          max-width: 900px;
+          margin: 0;
+
+          color: var(--muted);
+          font-size: 16px;
+          line-height: 1.65;
+        }
+
+        .activity-feedback-flow {
+          margin-top: 22px;
+
+          overflow-x: auto;
+          white-space: nowrap;
+
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+            Consolas, "Liberation Mono", monospace;
+
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+
+        /* ==========================================================
+           Test activities responsive
+           ========================================================== */
+
+        @media (max-width: 720px) {
+
+          .test-activities-intro {
+            padding: 48px 0 54px;
+          }
+
+          .test-activities-copy {
+            font-size: 17px;
+          }
+
+          .test-activity {
+            padding: 34px 0 44px;
+          }
+
+          .activity-copy > p {
+            font-size: 16px;
+          }
+
+          .design-factors {
+            grid-template-columns: 1fr;
+          }
+
+          .test-case-types {
+            grid-template-columns: 1fr;
+          }
+
+          .activity-flow {
+            font-size: 13px;
+          }
+
+          .activity-feedback {
+            padding-bottom: 60px;
+          }
+
+        }
     </style>
 </head>
 <body>
@@ -392,37 +953,96 @@
     <section class="intro">
 
         <nav class="contents" aria-label="Contents">
+
             <div class="contents-title">CONTENTS</div>
 
-            <a href="#test-process">
-                <span>01</span>
-                <span>Test Process</span>
-            </a>
 
-            <a href="#risk-based-testing">
+            <!-- 01 TEST PROCESS -->
+
+            <div class="contents-group">
+
+                <a class="contents-main" href="#test-process">
+                    <span>01</span>
+                    <span>Test Process</span>
+                </a>
+
+                <div class="contents-sub">
+
+                    <a href="#test-process">
+                        <span>SDLC</span>
+                    </a>
+
+                    <a href="#test-analyst-activities">
+                        <span>Test Analyst involvement</span>
+                    </a>
+
+                    <div class="contents-sub-level">
+
+                        <a href="#test-analysis">
+                            <span>Test Analysis</span>
+                        </a>
+
+                        <a href="#test-design">
+                            <span>Test Design</span>
+                        </a>
+
+                        <a href="#test-implementation">
+                            <span>Test Implementation</span>
+                        </a>
+
+                        <a href="#test-execution">
+                            <span>Test Execution</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <a class="contents-main" href="#risk-based-testing">
                 <span>02</span>
                 <span>Risk-Based Testing</span>
             </a>
 
-            <a href="#test-techniques">
+
+            <!-- 03 -->
+
+            <a class="contents-main" href="#test-techniques">
                 <span>03</span>
                 <span>Test Techniques</span>
             </a>
 
-            <a href="#software-quality">
+
+            <!-- 04 -->
+
+            <a class="contents-main" href="#software-quality">
                 <span>04</span>
-                <span>Software Quality<br>Characteristics</span>
+                <span>
+            Software Quality<br>
+            Characteristics
+        </span>
             </a>
 
-            <a href="#reviews">
+
+            <!-- 05 -->
+
+            <a class="contents-main" href="#reviews">
                 <span>05</span>
                 <span>Reviews</span>
             </a>
 
-            <a href="#test-tools">
+
+            <!-- 06 -->
+
+            <a class="contents-main" href="#test-tools">
                 <span>06</span>
                 <span>Test Tools &amp; Automation</span>
             </a>
+
         </nav>
 
         <div class="shell">
@@ -464,7 +1084,8 @@
         <div class="eyebrow">Test Process | SDLC · Testing in the Software Development Lifecycle</div>
         <h1>SDLC DEVELOPMENT MODELS</h1>
         <p class="hero-copy">
-            Six common development models and the key difference between them: how work is organized, delivered and tested.
+            Six common development models and the key difference between them: how work is organized, delivered and
+            tested.
         </p>
     </section>
 
@@ -477,8 +1098,10 @@
             <div class="model-copy">
                 <p>Development happens in a predefined order. One phase is completed before moving to the next.</p>
                 <p><strong>Best suited for:</strong> projects where requirements are stable and well understood.</p>
-                <p><strong>Main weakness:</strong> users may not see working software until late, so incorrect requirements can be expensive to discover.</p>
-                <p><strong>Testing impact:</strong> test analysis and design can start early, but dynamic testing starts when executable software is available.</p>
+                <p><strong>Main weakness:</strong> users may not see working software until late, so incorrect
+                    requirements can be expensive to discover.</p>
+                <p><strong>Testing impact:</strong> test analysis and design can start early, but dynamic testing starts
+                    when executable software is available.</p>
             </div>
         </div>
     </section>
@@ -488,12 +1111,17 @@
             <div class="model-label">Model</div>
             <h2>V-MODEL</h2>
             <p class="tagline">Link every development activity with a corresponding test activity.</p>
-            <div class="flow">Requirements ↔ Acceptance Testing | System Design ↔ System Testing | Architecture ↔ Integration Testing | Component Design ↔ Component Testing</div>
+            <div class="flow">Requirements ↔ Acceptance Testing | System Design ↔ System Testing | Architecture ↔
+                Integration Testing | Component Design ↔ Component Testing
+            </div>
             <div class="model-copy">
-                <p>Development and testing activities are planned in parallel, with test levels linked to development work products.</p>
-                <p><strong>Best suited for:</strong> projects with clear requirements and a strong need for verification, validation and traceability.</p>
+                <p>Development and testing activities are planned in parallel, with test levels linked to development
+                    work products.</p>
+                <p><strong>Best suited for:</strong> projects with clear requirements and a strong need for
+                    verification, validation and traceability.</p>
                 <p><strong>Main weakness:</strong> the model is relatively rigid, and late changes can be costly.</p>
-                <p><strong>Testing impact:</strong> test analysis and design start early, before the corresponding executable software exists.</p>
+                <p><strong>Testing impact:</strong> test analysis and design start early, before the corresponding
+                    executable software exists.</p>
             </div>
         </div>
     </section>
@@ -505,10 +1133,13 @@
             <p class="tagline">Build, test and improve through repeated cycles.</p>
             <div class="flow">Plan → Design → Build → Test → Evaluate → Improve → Next Iteration</div>
             <div class="model-copy">
-                <p>The solution is developed through repeated cycles. Each iteration revisits and improves what already exists.</p>
-                <p><strong>Best suited for:</strong> projects where requirements may evolve and feedback is needed during development.</p>
+                <p>The solution is developed through repeated cycles. Each iteration revisits and improves what already
+                    exists.</p>
+                <p><strong>Best suited for:</strong> projects where requirements may evolve and feedback is needed
+                    during development.</p>
                 <p><strong>Main weakness:</strong> rework may be needed, and total effort can be harder to predict.</p>
-                <p><strong>Testing impact:</strong> testing happens in every iteration, and regression testing becomes increasingly important.</p>
+                <p><strong>Testing impact:</strong> testing happens in every iteration, and regression testing becomes
+                    increasingly important.</p>
             </div>
         </div>
     </section>
@@ -521,9 +1152,12 @@
             <div class="flow">Requirements → Increment 1 → Increment 2 → Increment 3 → …</div>
             <div class="model-copy">
                 <p>Each increment adds new functionality to the existing product until the system becomes complete.</p>
-                <p><strong>Best suited for:</strong> projects where early delivery of working functionality is important.</p>
-                <p><strong>Main weakness:</strong> integration becomes more complex and good architecture is essential.</p>
-                <p><strong>Testing impact:</strong> each increment is tested together with existing functionality, increasing the need for regression testing.</p>
+                <p><strong>Best suited for:</strong> projects where early delivery of working functionality is
+                    important.</p>
+                <p><strong>Main weakness:</strong> integration becomes more complex and good architecture is essential.
+                </p>
+                <p><strong>Testing impact:</strong> each increment is tested together with existing functionality,
+                    increasing the need for regression testing.</p>
             </div>
         </div>
     </section>
@@ -537,8 +1171,10 @@
             <div class="model-copy">
                 <p>Development proceeds through repeated cycles driven by risk analysis and evaluation.</p>
                 <p><strong>Best suited for:</strong> large, complex or high-risk projects.</p>
-                <p><strong>Main weakness:</strong> it is complex and costly and requires strong risk-management expertise.</p>
-                <p><strong>Testing impact:</strong> testing and prototyping can be used early to reduce uncertainty and evaluate risks.</p>
+                <p><strong>Main weakness:</strong> it is complex and costly and requires strong risk-management
+                    expertise.</p>
+                <p><strong>Testing impact:</strong> testing and prototyping can be used early to reduce uncertainty and
+                    evaluate risks.</p>
             </div>
         </div>
     </section>
@@ -552,8 +1188,10 @@
             <div class="model-copy">
                 <p>Development is iterative and incremental, with frequent delivery, collaboration and feedback.</p>
                 <p><strong>Best suited for:</strong> projects where requirements change or are not fully known.</p>
-                <p><strong>Main weakness:</strong> scope and estimates may change, and strong collaboration and discipline are required.</p>
-                <p><strong>Testing impact:</strong> testing is continuous throughout iterations, with strong emphasis on fast feedback and regression testing.</p>
+                <p><strong>Main weakness:</strong> scope and estimates may change, and strong collaboration and
+                    discipline are required.</p>
+                <p><strong>Testing impact:</strong> testing is continuous throughout iterations, with strong emphasis on
+                    fast feedback and regression testing.</p>
             </div>
         </div>
     </section>
@@ -621,6 +1259,708 @@
             </div>
         </div>
     </section>
+
+    <!-- ==========================================================
+     TEST ANALYST INVOLVEMENT IN TEST ACTIVITIES
+========================================================== -->
+
+    <section class="test-activities-intro" id="test-analyst-activities">
+        <div class="shell">
+
+            <div class="eyebrow">
+                Test Process | Test Analyst involvement in test activities
+            </div>
+
+            <h2>FROM ANALYSIS TO EXECUTION</h2>
+
+            <p class="test-activities-copy">
+                The Test Analyst is involved throughout the test process:
+                analyzing what needs to be tested, designing how it should be tested,
+                preparing testware for execution and evaluating the results.
+            </p>
+
+
+            <div class="activities-overview">
+
+                <div class="activities-overview-label">
+                    The core flow
+                </div>
+
+                <div class="activities-flow">
+
+                    <div class="activities-flow-item">
+                        <strong>TEST ANALYSIS</strong>
+                        <span>What should we test?</span>
+                    </div>
+
+                    <div class="activities-flow-arrow">→</div>
+
+                    <div class="activities-flow-item">
+                        <strong>TEST DESIGN</strong>
+                        <span>How should we test it?</span>
+                    </div>
+
+                    <div class="activities-flow-arrow">→</div>
+
+                    <div class="activities-flow-item">
+                        <strong>TEST IMPLEMENTATION</strong>
+                        <span>Are we ready to execute?</span>
+                    </div>
+
+                    <div class="activities-flow-arrow">→</div>
+
+                    <div class="activities-flow-item">
+                        <strong>TEST EXECUTION</strong>
+                        <span>Run, compare and evaluate.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================================
+         TEST ANALYSIS
+    ========================================================== -->
+
+    <section class="test-activity" id="test-analysis">
+
+        <div class="shell">
+
+            <div class="activity-label">
+                Test Activity · 01
+            </div>
+
+            <h2>TEST ANALYSIS</h2>
+
+            <p class="activity-tagline">
+                What should we test?
+            </p>
+
+
+            <div class="activity-copy">
+
+                <p>
+                    During test analysis, the Test Analyst evaluates the
+                    <strong>test basis</strong> to identify what needs to be tested.
+                </p>
+
+                <p>
+                    The test basis is not limited to written documentation.
+                    It may include requirements, user stories, specifications,
+                    business processes, verbal information and other relevant
+                    sources of knowledge.
+                </p>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Test basis
+                </span>
+
+                    <p>
+                        The Test Analyst evaluates the test basis for
+                        <strong>
+                            completeness, consistency, correctness and testability.
+                        </strong>
+                        Gaps, inconsistencies or changes may affect the test scope,
+                        test conditions and planned testing.
+                    </p>
+
+                </div>
+
+
+                <p>
+                    Relevant test planning information should be available
+                    before detailed test analysis proceeds.
+                </p>
+
+
+                <div class="activity-flow">
+                    Test scope + objectives + approach + test basis + product risks
+                    → Test analysis
+                </div>
+
+
+                <p>
+                    The Test Analyst uses appropriate
+                    <strong>test techniques</strong>
+                    to identify test conditions.
+                    These conditions are then prioritized based on the testing
+                    objectives, product risks and other relevant factors.
+                </p>
+
+                <p>
+                    Product risks are an important input.
+                    Higher-risk areas normally require greater testing effort,
+                    stronger coverage or higher priority.
+                </p>
+
+
+                <ul class="activity-list">
+
+                    <li>
+                        Evaluate the test basis.
+                    </li>
+
+                    <li>
+                        Identify test conditions.
+                    </li>
+
+                    <li>
+                        Apply appropriate test techniques.
+                    </li>
+
+                    <li>
+                        Consider identified product risks.
+                    </li>
+
+                    <li>
+                        Prioritize test conditions.
+                    </li>
+
+                    <li>
+                        Refine high-level test conditions when more detail is needed.
+                    </li>
+
+                    <li>
+                        Review test conditions with relevant stakeholders.
+                    </li>
+
+                </ul>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Remember
+                </span>
+
+                    <p>
+                        <strong>Test analysis answers WHAT to test.</strong>
+                        Test conditions are identified from the test basis
+                        while considering objectives and product risks.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         TEST DESIGN
+    ========================================================== -->
+
+    <section class="test-activity" id="test-design">
+
+        <div class="shell">
+
+            <div class="activity-label">
+                Test Activity · 02
+            </div>
+
+            <h2>TEST DESIGN</h2>
+
+            <p class="activity-tagline">
+                How should we test it?
+            </p>
+
+
+            <div class="activity-copy">
+
+                <p>
+                    During test design, the Test Analyst transforms
+                    <strong>test conditions into test cases and other testware.</strong>
+                </p>
+
+
+                <div class="activity-flow">
+                    Test conditions → Test cases → Test data + Environment requirements
+                </div>
+
+
+                <p>
+                    The way test design is performed and the required level of detail
+                    depend on the project context.
+                </p>
+
+
+                <div class="design-factors">
+
+                    <div class="design-factor">
+                        Required coverage
+                    </div>
+
+                    <div class="design-factor">
+                        Product risks
+                    </div>
+
+                    <div class="design-factor">
+                        Test basis
+                    </div>
+
+                    <div class="design-factor">
+                        SDLC
+                    </div>
+
+                    <div class="design-factor">
+                        Test level
+                    </div>
+
+                    <div class="design-factor">
+                        Tester knowledge &amp; experience
+                    </div>
+
+                    <div class="design-factor">
+                        Product complexity
+                    </div>
+
+                    <div class="design-factor">
+                        Available time
+                    </div>
+
+                    <div class="design-factor">
+                        Budget &amp; tools
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Depending on the context, the Test Analyst may design
+                    <strong>high-level</strong>
+                    or
+                    <strong>low-level</strong>
+                    test cases.
+                </p>
+
+
+                <div class="test-case-types">
+
+                    <article class="test-case-type">
+
+                        <h3>HIGH-LEVEL TEST CASE</h3>
+
+                        <p>
+                            Describes what should be tested without specifying
+                            every concrete input or execution step.
+                        </p>
+
+                        <div class="test-case-example">
+
+                        <span class="test-case-example-label">
+                            Example
+                        </span>
+
+                            <p>
+                                Verify that a registered user can reset
+                                their password.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="test-case-type">
+
+                        <h3>LOW-LEVEL TEST CASE</h3>
+
+                        <p>
+                            Provides concrete information such as preconditions,
+                            inputs, actions and expected results so that the test
+                            can be reproduced.
+                        </p>
+
+                        <div class="test-case-example">
+
+                        <span class="test-case-example-label">
+                            Example
+                        </span>
+
+                            <p>
+                                Request a password reset for a registered account,
+                                open a valid reset link, enter a valid new password
+                                and verify that the old password is no longer accepted.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Level of detail
+                </span>
+
+                    <p>
+                        Experienced testers may work effectively with less detailed
+                        test cases. More detailed testware may be needed when
+                        reproducibility, traceability or support for less experienced
+                        testers is important.
+                    </p>
+
+                </div>
+
+
+                <p>
+                    The Test Analyst also identifies the required
+                    <strong>test data</strong>
+                    and
+                    <strong>test environment requirements.</strong>
+                </p>
+
+                <p>
+                    Time, budget, available skills and tools may constrain
+                    test design. The goal is not to create as many test cases
+                    as possible, but to achieve appropriate coverage of the
+                    objectives and risks.
+                </p>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Remember
+                </span>
+
+                    <p>
+                        <strong>Test design answers HOW to test.</strong>
+                        Test conditions are transformed into test cases,
+                        test data requirements and environment requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         TEST IMPLEMENTATION
+    ========================================================== -->
+
+    <section class="test-activity" id="test-implementation">
+
+        <div class="shell">
+
+            <div class="activity-label">
+                Test Activity · 03
+            </div>
+
+            <h2>TEST IMPLEMENTATION</h2>
+
+            <p class="activity-tagline">
+                Are we ready to execute?
+            </p>
+
+
+            <div class="activity-copy">
+
+                <p>
+                    During test implementation, the testware required for
+                    execution is completed and organized.
+                </p>
+
+
+                <div class="activity-flow">
+                    Test cases → Test procedures → Test suites → Execution schedule
+                </div>
+
+
+                <p>
+                    The Test Analyst contributes to ensuring that the required
+                    testware, test data and test environment are ready
+                    for test execution.
+                </p>
+
+
+                <ul class="activity-list">
+
+                    <li>
+                        Finalize test procedures.
+                    </li>
+
+                    <li>
+                        Organize test procedures and test cases into test suites.
+                    </li>
+
+                    <li>
+                        Determine an appropriate test execution order and schedule.
+                    </li>
+
+                    <li>
+                        Prioritize testing based on product risks and
+                        other relevant factors.
+                    </li>
+
+                    <li>
+                        Prepare or verify the required test data.
+                    </li>
+
+                    <li>
+                        Verify that required test environment components
+                        are available.
+                    </li>
+
+                    <li>
+                        Identify test cases that may be suitable for automation.
+                    </li>
+
+                    <li>
+                        Maintain traceability between the test basis,
+                        test conditions and test cases where required.
+                    </li>
+
+                </ul>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Prioritization
+                </span>
+
+                    <p>
+                        Product risk is an important prioritization factor,
+                        but it is not the only one. Dependencies, business priority,
+                        test environment availability and other constraints may
+                        also affect the execution order.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Remember
+                </span>
+
+                    <p>
+                        <strong>
+                            Test implementation prepares testing for execution.
+                        </strong>
+                        Testware is finalized, organized and made ready to run.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         TEST EXECUTION
+    ========================================================== -->
+
+    <section class="test-activity" id="test-execution">
+
+        <div class="shell">
+
+            <div class="activity-label">
+                Test Activity · 04
+            </div>
+
+            <h2>TEST EXECUTION</h2>
+
+            <p class="activity-tagline">
+                Execute, observe, compare and evaluate.
+            </p>
+
+
+            <div class="activity-copy">
+
+                <p>
+                    Tests are executed according to the planned
+                    <strong>test execution schedule.</strong>
+                </p>
+
+
+                <div class="activity-flow">
+                    Execute → Observe → Compare → Analyze → Log → Report
+                </div>
+
+
+                <p>
+                    During execution, the Test Analyst performs tests,
+                    observes the actual results and compares them with
+                    the expected results.
+                </p>
+
+
+                <ul class="activity-list">
+
+                    <li>
+                        Execute tests.
+                    </li>
+
+                    <li>
+                        Observe and record actual results.
+                    </li>
+
+                    <li>
+                        Compare actual results with expected results.
+                    </li>
+
+                    <li>
+                        Analyze anomalies and unexpected behavior.
+                    </li>
+
+                    <li>
+                        Report defects when appropriate.
+                    </li>
+
+                    <li>
+                        Log test execution results.
+                    </li>
+
+                </ul>
+
+
+                <p>
+                    Test execution may include testing new functionality,
+                    <strong>regression testing</strong>,
+                    <strong>confirmation testing</strong>,
+                    exploratory testing and the execution of predefined
+                    test procedures.
+                </p>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Manual &amp; automated testing
+                </span>
+
+                    <p>
+                        Tests may be executed manually or using automation.
+                        The Test Analyst may identify suitable automation candidates
+                        and provide domain and test-design knowledge, while automated
+                        test implementation may involve technical testers,
+                        automation engineers or developers.
+                    </p>
+
+                </div>
+
+
+                <p>
+                    Test execution is not only about following existing test cases.
+                    The Test Analyst should also evaluate the information discovered
+                    during testing.
+                </p>
+
+
+                <ul class="activity-list">
+
+                    <li>
+                        Recognize defect clusters.
+                    </li>
+
+                    <li>
+                        Investigate failed automated tests and reproduce
+                        them manually when useful.
+                    </li>
+
+                    <li>
+                        Identify the need for additional testing.
+                    </li>
+
+                    <li>
+                        Identify new or changed product risks.
+                    </li>
+
+                    <li>
+                        Suggest improvements to existing test cases
+                        and test design.
+                    </li>
+
+                    <li>
+                        Identify areas requiring additional regression testing.
+                    </li>
+
+                    <li>
+                        Provide test-result information that supports
+                        test monitoring and control.
+                    </li>
+
+                </ul>
+
+
+                <div class="activity-key">
+
+                <span class="activity-key-label">
+                    Remember
+                </span>
+
+                    <p>
+                        <strong>Execution produces new information.</strong>
+                        Test results can reveal defects, new risks and coverage gaps
+                        and may therefore lead back to test analysis and test design.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         TEST ACTIVITIES ARE ITERATIVE
+    ========================================================== -->
+
+    <section class="activity-feedback">
+
+        <div class="shell">
+
+            <div class="activity-feedback-box">
+
+                <h2>THE PROCESS IS NOT STRICTLY LINEAR</h2>
+
+                <p>
+                    Test analysis, test design, test implementation and test execution
+                    may overlap and repeat. Information discovered during execution
+                    can result in new test conditions, additional test cases,
+                    changed priorities or newly identified risks.
+                </p>
+
+
+                <div class="activity-feedback-flow">
+                    New information / risk
+                    → Analysis
+                    → Design
+                    → Implementation
+                    → Execution
+                    → New information …
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
 
 <footer class="shell">

@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Contact form | Elizaveta Aleksandrova</title>
+    <meta
+            name="description"
+            content="Contact Elizaveta Aleksandrova — QA Engineer specializing in IAM testing."
+    />
+
+    <title>Contact | Elizaveta Aleksandrova</title>
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+          box-sizing: border-box;
+        }
 
         :root {
-          --icon-x: 12px;
-          --icon-space: 40px;
-          --control-height: 44px;
-
-          /* topbar */
           --text: #151515;
           --muted: #6f7480;
+          --border: #d7d7d7;
+          --background: #ffffff;
+          --button: #333333;
+          --button-hover: #555555;
+          --success: #166534;
           --max: 1180px;
         }
 
         body {
           margin: 0;
-          font-family: Arial, sans-serif;
-          background: #fff;
-          color: #222;
-
           min-height: 100svh;
+
+          font-family: Inter, ui-sans-serif, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+          background: var(--background);
+          color: var(--text);
 
           display: flex;
           justify-content: center;
-          align-items: flex-start;
+          align-items: center;
 
-          text-align: center;
-
-          padding: max(16px, env(safe-area-inset-top))
-                   max(16px, env(safe-area-inset-right))
-                   max(16px, env(safe-area-inset-bottom))
-                   max(16px, env(safe-area-inset-left));
+          padding:
+            max(90px, env(safe-area-inset-top))
+            max(24px, env(safe-area-inset-right))
+            max(40px, env(safe-area-inset-bottom))
+            max(24px, env(safe-area-inset-left));
         }
-
 
         /* =========================
            TOP BAR
-           ========================= */
+        ========================= */
 
         .topbar {
           position: absolute;
@@ -61,11 +68,7 @@
 
           padding: 24px 0;
 
-          font-family: Inter, ui-sans-serif, -apple-system,
-                       BlinkMacSystemFont, "Segoe UI", sans-serif;
           font-size: 14px;
-
-          text-align: left;
         }
 
         .brand {
@@ -74,179 +77,224 @@
           text-decoration: none;
         }
 
-        .topbar .back-link {
-          display: inline;
-          padding: 0;
-          min-height: 0;
-          line-height: normal;
-
-          border-radius: 0;
-          background: transparent;
-
+        .back-link {
           color: var(--muted);
-          font-size: 14px;
-          font-weight: normal;
           text-decoration: none;
 
-          -webkit-tap-highlight-color: transparent;
+          transition: color 0.2s ease;
         }
 
-        .topbar .back-link:hover {
-          background: transparent;
+        .back-link:hover {
           color: var(--text);
         }
 
-
         /* =========================
-           CONTACT FORM
-           ========================= */
+           CONTACT
+        ========================= */
 
         .container {
           width: 100%;
-          max-width: 420px;
-          margin-top: 12px;
+          max-width: 460px;
+          text-align: center;
         }
 
         h1 {
           margin: 0;
-          font-size: clamp(22px, 5.5vw, 28px);
-          letter-spacing: 0.5px;
+
+          font-size: clamp(26px, 6vw, 34px);
+          letter-spacing: 0.04em;
         }
 
         .subtitle {
-          margin: 6px 0 20px;
-          font-size: clamp(14px, 3.8vw, 16px);
-          font-weight: normal;
-          line-height: 1.35;
+          margin: 10px auto 32px;
+          max-width: 390px;
+
+          color: var(--muted);
+          font-size: 15px;
+          line-height: 1.6;
         }
 
         form {
           display: flex;
           flex-direction: column;
-          gap: 14px;
-          align-items: center;
+          gap: 16px;
+
+          text-align: left;
         }
 
         .field {
-          width: min(320px, 92vw);
+          width: 100%;
         }
 
+        label {
+          display: block;
+
+          margin-bottom: 7px;
+
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        input,
         select,
-        input[type="text"].date-input,
-        input[type="date"].date-input,
         textarea {
           width: 100%;
-          height: var(--control-height);
-          padding: 10px var(--icon-space) 10px 12px;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          font-family: inherit;
-          font-size: 16px;
-          background-color: #fff;
-          color: #222;
 
-          -webkit-tap-highlight-color: transparent;
-          touch-action: manipulation;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+
+          background: #fff;
+          color: var(--text);
+
+          font: inherit;
+          font-size: 16px;
+
+          transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+        }
+
+        input,
+        select {
+          height: 46px;
+          padding: 0 12px;
         }
 
         textarea {
-          height: 120px;
-          resize: none;
-          padding-right: 12px;
+          min-height: 140px;
+          padding: 12px;
+
+          resize: vertical;
+          line-height: 1.5;
         }
 
+        input::placeholder,
         textarea::placeholder {
           color: #999;
-          font-style: italic;
         }
 
         select {
-          appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-size: 16px 16px;
-          background-position: right var(--icon-x) center;
-        }
-
-        .date-input {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M7 2h2v2h6V2h2v2h3v18H2V4h5V2zm13 8H4v10h16V10z'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-size: 16px 16px;
-          background-position: right var(--icon-x) center;
           cursor: pointer;
         }
 
-        input[type="date"].date-input::-webkit-calendar-picker-indicator {
-          opacity: 0;
-          cursor: pointer;
+        input:hover,
+        select:hover,
+        textarea:hover {
+          border-color: #aaa;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+          outline: none;
+
+          border-color: var(--text);
+          box-shadow: 0 0 0 3px rgba(21, 21, 21, 0.08);
         }
 
         button {
-          margin-top: 6px;
-          padding: 10px 18px;
+          width: 100%;
+          min-height: 46px;
+
+          margin-top: 4px;
+
           border: none;
-          border-radius: 10px;
-          background: #333;
+          border-radius: 8px;
+
+          background: var(--button);
           color: #fff;
+
+          font: inherit;
+          font-size: 15px;
+          font-weight: 600;
+
           cursor: pointer;
-          font-size: 16px;
-          min-height: 44px;
-          -webkit-tap-highlight-color: transparent;
-          touch-action: manipulation;
+
+          transition:
+            background 0.2s ease,
+            transform 0.1s ease;
         }
 
         button:hover {
-          background: #555;
+          background: var(--button-hover);
         }
 
-        button:focus-visible,
-        select:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible {
-          outline: 2px solid #222;
-          outline-offset: 3px;
+        button:active {
+          transform: translateY(1px);
         }
 
-        .success {
+        button:disabled {
+          opacity: 0.65;
+          cursor: wait;
+        }
+
+        .form-note {
+          margin: 2px 0 0;
+
+          color: var(--muted);
+          font-size: 12px;
+          line-height: 1.5;
+          text-align: center;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
           display: none;
-          margin-top: 20px;
+
+          margin-top: 24px;
+          padding: 18px;
+
+          border: 1px solid var(--border);
+          border-radius: 8px;
+
+          text-align: center;
         }
 
-        .success p {
-          color: #006400;
-          font-weight: bold;
-          margin-bottom: 16px;
-          line-height: 1.35;
+        .status.success {
+          color: var(--success);
         }
 
-        /* Эта back-link остаётся кнопкой внутри success */
-        .success .back-link {
+        .status.error {
+          color: #991b1b;
+        }
+
+        .status p {
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .status .back-link {
           display: inline-block;
-          padding: 10px 18px;
-          border-radius: 10px;
-          background: #333;
-          color: #fff;
-          text-decoration: none;
-          min-height: 44px;
-          line-height: 24px;
-          -webkit-tap-highlight-color: transparent;
-          touch-action: manipulation;
+          margin-top: 16px;
+
+          color: var(--text);
+          font-weight: 600;
         }
 
-        .success .back-link:hover {
-          background: #555;
-        }
-
-        @media (min-height: 760px) {
+        @media (max-width: 520px) {
           body {
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 110px;
           }
 
-          .container {
-            margin-top: 0;
+          .topbar {
+            width: calc(100% - 32px);
+            padding: 20px 0;
+          }
+
+          .topbar .brand {
+            font-size: 13px;
+          }
+
+          .topbar .back-link {
+            font-size: 13px;
+          }
+
+          .subtitle {
+            margin-bottom: 26px;
           }
         }
     </style>
@@ -254,88 +302,150 @@
 
 <body>
 
-<header class="shell topbar">
-    <a class="brand" href="../">EA / CONTACTS</a>
+<header class="topbar">
+    <a class="brand" href="../">EA / CONTACT</a>
     <a class="back-link" href="../">← Back to profile</a>
 </header>
 
-<div class="container">
-    <h1>CONTACT FORM</h1>
-    <p class="subtitle">Please fill out the form below</p>
+<main class="container">
 
-    <form id="contact-form" action="https://formspree.io/f/mldpdwqv" method="POST">
-        <div class="field">
-            <select name="topic" required>
-                <option value="" disabled selected>Choose a topic…</option>
-                <option value="job">Job opportunity</option>
-                <option value="networking">Networking</option>
-                <option value="qa">QA collaboration</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
+    <h1>LET'S CONNECT</h1>
+
+    <p class="subtitle">
+        Have a job opportunity, QA-related project, or just want to connect?
+        Send me a message.
+    </p>
+
+    <form
+            id="contact-form"
+            action="https://formspree.io/f/mldpdwqv"
+            method="POST"
+    >
 
         <div class="field">
+            <label for="name">Name</label>
+
             <input
+                    id="name"
                     type="text"
-                    class="date-input"
-                    id="preferred-date"
-                    name="preferred_date"
-                    placeholder="Select date"
+                    name="name"
+                    placeholder="Your name"
+                    autocomplete="name"
+                    maxlength="100"
                     required
             />
         </div>
 
         <div class="field">
-        <textarea
-                name="message"
-                placeholder="Drop me a quick note…"
-                maxlength="300"
-                required
-        ></textarea>
+            <label for="email">Email</label>
+
+            <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    maxlength="150"
+                    required
+            />
         </div>
 
-        <button type="submit">Beam it up!</button>
+        <div class="field">
+            <label for="topic">Topic</label>
+
+            <select id="topic" name="topic" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="Job opportunity">Job opportunity</option>
+                <option value="QA collaboration">QA collaboration</option>
+                <option value="Networking">Networking</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="message">Message</label>
+
+            <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me a little about what you'd like to discuss..."
+                    maxlength="1500"
+                    required
+            ></textarea>
+        </div>
+
+        <!-- Helps Formspree identify the reply address -->
+        <input
+                type="hidden"
+                name="_subject"
+                value="New message from elaleksap.com"
+        />
+
+        <!-- Simple honeypot for bots -->
+        <input
+                type="text"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+                style="display: none;"
+        />
+
+        <button id="submit-button" type="submit">
+            Send message
+        </button>
+
+        <p class="form-note">
+            I’ll receive your message by email.
+        </p>
+
     </form>
 
-    <div class="success" id="success-message">
-        <p>Your message has been sent successfully.</p>
-        <a href="../index.html" class="back-link">Back to profile</a>
+    <div
+            class="status success"
+            id="success-message"
+            role="status"
+            aria-live="polite"
+    >
+        <p>
+            Thanks — your message has been sent successfully.
+        </p>
+
+        <a href="../" class="back-link">
+            Back to profile
+        </a>
     </div>
-</div>
+
+    <div
+            class="status error"
+            id="error-message"
+            role="alert"
+            aria-live="assertive"
+    >
+        <p>
+            Something went wrong. Please try again.
+        </p>
+    </div>
+
+</main>
 
 <script>
     const form = document.getElementById("contact-form");
-    const successMessage = document.getElementById("success-message");
-    const dateInput = document.getElementById("preferred-date");
+    const submitButton = document.getElementById("submit-button");
 
-    function todayISO() {
-      const t = new Date();
-      const yyyy = t.getFullYear();
-      const mm = String(t.getMonth() + 1).padStart(2, "0");
-      const dd = String(t.getDate()).padStart(2, "0");
-      return `${yyyy}-${mm}-${dd}`;
-    }
+    const successMessage =
+      document.getElementById("success-message");
 
-    const enableDateMode = () => {
-      if (dateInput.type !== "date") {
-        dateInput.type = "date";
-        dateInput.min = todayISO();
-      }
-      if (typeof dateInput.showPicker === "function") {
-        try { dateInput.showPicker(); } catch (_) {}
-      }
-    };
-
-    const maybeDisableDateMode = () => {
-      if (!dateInput.value) dateInput.type = "text";
-    };
-
-    dateInput.addEventListener("focus", enableDateMode);
-    dateInput.addEventListener("click", enableDateMode);
-    dateInput.addEventListener("blur", maybeDisableDateMode);
+    const errorMessage =
+      document.getElementById("error-message");
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      successMessage.style.display = "none";
+      errorMessage.style.display = "none";
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
 
       const formData = new FormData(form);
 
@@ -343,21 +453,33 @@
         const response = await fetch(form.action, {
           method: form.method,
           body: formData,
-          headers: { Accept: "application/json" }
+          headers: {
+            Accept: "application/json"
+          }
         });
 
-        if (response.ok) {
-          form.style.display = "none";
-          successMessage.style.display = "block";
-          // ensure success is visible even with keyboard
-          successMessage.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          alert("Something went wrong. Please try again.");
+        if (!response.ok) {
+          throw new Error("Form submission failed");
         }
-      } catch {
-        alert("Something went wrong. Please try again.");
+
+        form.reset();
+        form.style.display = "none";
+
+        successMessage.style.display = "block";
+        successMessage.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      } catch (error) {
+        errorMessage.style.display = "block";
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send message";
       }
     });
 </script>
+
 </body>
 </html>
